@@ -44,6 +44,11 @@ This includes:
 
 # Common Bash Concepts
 
+## Basic Script Template
+```bash
+#!/bin/bash
+echo "Hello, World!"
+
 ## Basic Bash Concepts
 
 | Concept        | Example / Syntax                          | Description                 |
@@ -63,8 +68,6 @@ This includes:
 
 chmod +x script.sh # Make script executable
 ./script.sh # Run the script
-
-text
 
 ---
 
@@ -141,13 +144,9 @@ Use `ls -l` to view permissions:
 
 ls -l script.sh
 
-text
-
 Example output:
 
 -rwxr-xr-- 1 user group 123 Apr 19 14:00 script.sh
-
-text
 
 ### Adding Execute Permission
 
@@ -155,21 +154,15 @@ To allow a script to be executed, add execute permission:
 
 chmod +x script.sh
 
-text
-
 or for the user only:
 
 chmod u+x script.sh
-
-text
 
 ### Running the Script
 
 Once executable, run the script with:
 
 ./script.sh
-
-text
 
 ---
 
@@ -179,11 +172,8 @@ text
 
 if [ condition ]
 then
-
 commands
 fi
-
-text
 
 Example:
 
@@ -194,26 +184,18 @@ then
 echo "a is less than b"
 fi
 
-text
-
 Output:
 
 a is less than b
-
-text
 
 ### `if...else` Statement
 
 if [ condition ]
 then
-
 commands if true
 else
-
 commands if false
 fi
-
-text
 
 Example:
 
@@ -226,30 +208,21 @@ else
 echo "a is greater than b"
 fi
 
-text
-
 Output:
 
 a is greater than b
-
-text
 
 ### `if...elif...else` Statement
 
 if [ condition1 ]
 then
-
 commands1
 elif [ condition2 ]
 then
-
 commands2
 else
-
 commands3
 fi
-
-text
 
 Example to determine triangle type:
 
@@ -267,8 +240,6 @@ else
 echo SCALENE
 fi
 
-text
-
 ---
 
 ## Bash `case` Statement Syntax
@@ -284,14 +255,30 @@ commands ;;
 default commands ;;
 esac
 
-text
-
 - Patterns can include wildcards and multiple options separated by `|`.
 - The `*)` pattern acts as a default case.
 - Each pattern block ends with `;;`.
 - The statement ends with `esac` (case spelled backward).
 
 ---
+
+## 📝 vi/vim Cheat Sheet (Editing Files in Terminal)
+
+### 📌 Modes
+- `Esc` — Normal mode
+- `i` — Insert before cursor
+- `a` — Insert after cursor
+- `:` — Command-line mode
+
+### 🖊️ Insert Mode
+| Command | Description                     |
+|---------|---------------------------------|
+| `i`     | Insert at cursor                |
+| `I`     | Insert at beginning of line     |
+| `a`     | Append after cursor             |
+| `A`     | Append at end of line           |
+| `o`     | Open new line below             |
+| `O`     | Open new line above             |
 
 
 ### 💾 Save and Exit
@@ -337,13 +324,6 @@ text
 | `clear` | Clear the terminal screen         |
 
 ---
-
-## 🐚 Bash Scripting Tips
-
-### Basic Script Template
-```bash
-#!/bin/bash
-echo "Hello, World!"
 
 > ✨ *This document is a living reference — feel free to fork and add your own insights!*
 
