@@ -299,6 +299,17 @@ esac
 | `u`     | Undo                            |
 | `Ctrl + r` | Redo                         |
 
+### Miscellaneous
+
+| Command                      | Action                                           |
+|------------------------------|--------------------------------------------------|
+| `:2,4cop6`                   | Copies lines 2 to 4 and pastes it after line 6   |
+| `:1,3d`                      | Deletes lines 1 to 3                             |
+| `:w /root/Desktop/filename`  | Saves the file to the Desktop                    |
+| `:set nu`                    | Shows line numbers                               |
+| `:set nonu`                  | Removes line numbers                             |
+
+
 ### 🔍 Searching
 - `/text` — Search forward
 - `?text` — Search backward
@@ -326,4 +337,122 @@ esac
 ---
 
 > ✨ *This document is a living reference — feel free to fork and add your own insights!*
+
+
+# 🐧 Linux Interview questions
+
+Basic Linux Commands & Concepts
+===============================
+1. What is the difference between ls and ll commands?
+    ls lists files and directories in the current directory.
+
+    ll is equivalent to ls -l, providing a detailed listing with information such as permissions, owner, size, and modification time.
+
+2. What is a directory in Linux? How do you create one?
+    A directory in Linux is a folder used to organize files.
+
+    To create a directory, use the mkdir command:
+
+    mkdir directory_name
+
+3. How do you view the contents of a file in Linux?
+    You can use commands like cat, less, more, head, or tail to view file contents:
+
+    cat filename
+    less filename
+
+4. Explain the difference between rm, rmdir, and unlink.
+    rm removes files or directories (with -r for directories).
+
+    rmdir removes empty directories.
+
+    unlink removes a single file (similar to rm but only for files).
+
+5. What are symbolic links and how do you create them?
+    Symbolic links are references or pointers to other files or directories.
+
+    To create a symbolic link:
+
+    ln -s target_file symlink_name
+
+6. What does the chmod command do? Can you give examples of its usage?
+    chmod changes file or directory permissions.
+
+    To give full permissions to the owner and read/execute to others:
+
+    chmod 755 file_name
+
+    To give read/write/execute permissions to the owner only:
+
+    chmod 700 file_name
+
+7. How do you check disk space usage in Linux?
+    Use the df command to display disk space usage:
+    
+    df -h
+
+8. Explain the difference between ps, top, and htop commands.
+    ps displays a snapshot of running processes.
+
+    top provides a dynamic, real-time view of processes and system performance.
+
+    htop is an interactive process viewer, similar to top, but more user-friendly.
+
+9. How can you redirect the output of a command to a file?
+    Use > to redirect output to a file:
+
+    command > output_file
+
+    To append output to a file, use >>:
+    
+    command >> output_file
+
+10. What is a pipe in Linux, and how do you use it?
+    A pipe (|) allows the output of one command to be used as input for another:
+
+    ls | grep "file"
+
+Filesystem & File Permissions
+=============================
+1. What are file permissions in Linux, and how do you interpret them?
+File permissions determine access rights for users. They are displayed as a string like rwxr-xr--:
+
+r = read, w = write, x = execute
+
+The first set is for the file owner, the second for the group, and the third for others.
+
+2. What is the difference between a soft link and a hard link?
+Soft link (symlink): A symbolic link that points to the original file, can span across different filesystems, and may break if the target file is deleted.
+
+Created using ln -s target_file link_name.
+
+Hard link: Points directly to the data blocks of the original file, and cannot span across different filesystems. Deleting the original file doesn't affect the hard link.
+
+Created using ln target_file link_name.
+
+3. Explain the purpose of /etc/fstab file.
+/etc/fstab is a configuration file that contains information about disk partitions, their mount points, and filesystems. It is used by the system to automatically mount file systems at boot.
+
+4. How can you change file ownership in Linux?
+Use the chown command to change file ownership:
+
+chown owner:group file_name
+
+5. What is the find command and how would you search for a file in a directory?
+The find command searches for files and directories in a specified path:
+
+find /path/to/directory -name "filename"
+6. What is the du command used for, and how does it differ from df?
+du (disk usage) reports the space used by files and directories:
+
+
+du -sh /path/to/directory
+df (disk free) shows the available disk space on the filesystem.
+
+7. What is the difference between chmod 777 and chmod 755?
+chmod 777 gives read, write, and execute permissions to everyone (owner, group, others).
+
+chmod 755 gives read, write, and execute permissions to the owner, and read and execute permissions to the group and others.
+
+
 
