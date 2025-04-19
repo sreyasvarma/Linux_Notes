@@ -42,5 +42,308 @@ This includes:
 
 ---
 
+# Common Bash Concepts
+
+## Basic Bash Concepts
+
+| Concept        | Example / Syntax                          | Description                 |
+|----------------|-----------------------------------------|-----------------------------|
+| Variable       | `name="Linux"`                          | Declares a variable          |
+| Print          | `echo "Hi $name"`                       | Prints text or variable value|
+| If Condition   | `if [ $a -gt $b ]; then echo "A"; fi` | Conditional logic            |
+| For Loop       | `for i in {1..5}; do echo $i; done`    | Loop over a sequence         |
+| While Loop     | `while [ $i -lt 5 ]; do echo $i; ((i++)); done` | While loop           |
+| Read Input     | `read name`                            | Takes input from user        |
+| Function       | `greet() { echo "Hi $1"; }`            | Defines a function           |
+| Call Function  | `greet "Alice"`                        | Calls a function with argument|
+
+---
+
+## Running a Script
+
+chmod +x script.sh # Make script executable
+./script.sh # Run the script
+
+text
+
+---
+
+## System Management Commands
+
+### Process and Resource Monitoring
+
+| Command     | Description                      |
+|-------------|---------------------------------|
+| `ps aux`    | Show all running processes       |
+| `top`       | Live system resource usage       |
+| `htop`      | Interactive process viewer (if installed) |
+| `kill PID`  | Terminate a process by its PID   |
+| `df -h`     | Disk space usage in human-readable format |
+| `du -sh`    | Show size of current directory   |
+| `free -h`   | Show memory usage                |
+| `uptime`    | Show system uptime and load average |
+
+### Managing Services with systemctl
+
+| Command                     | Description                       |
+|-----------------------------|---------------------------------|
+| `systemctl status`          | View overall system status        |
+| `systemctl start nginx`     | Start a service                   |
+| `systemctl stop nginx`      | Stop a service                   |
+| `systemctl restart nginx`   | Restart a service                |
+| `systemctl enable nginx`    | Enable service on boot           |
+| `systemctl disable nginx`   | Disable service from boot        |
+| `systemctl is-active nginx` | Check if a service is running    |
+
+---
+
+## vi/vim Cheat Sheet (Editing Files in Terminal)
+
+### Modes
+
+- `Esc` — Normal mode
+- `i` — Insert before cursor
+- `a` — Insert after cursor
+- `:` — Command-line mode
+
+### Insert Mode Commands
+
+| Command | Description                  |
+|---------|------------------------------|
+| `i`     | Insert at cursor             |
+| `I`     | Insert at beginning of line  |
+| `a`     | Append after cursor          |
+| `A`     | Append at end of line        |
+| `o`     | Open new line below          |
+| `O`     | Open new line above          |
+
+---
+
+## File Permissions and Executing Bash Scripts
+
+### Understanding File Permissions
+
+Linux file permissions control who can read, write, or execute a file. Permissions apply separately to:
+
+- **User** (owner)
+- **Group**
+- **Others**
+
+Permission types:
+
+- **Read (r)**: Ability to read the file
+- **Write (w)**: Ability to modify the file
+- **Execute (x)**: Ability to run the file as a program or script
+
+### Checking Permissions
+
+Use `ls -l` to view permissions:
+
+ls -l script.sh
+
+text
+
+Example output:
+
+-rwxr-xr-- 1 user group 123 Apr 19 14:00 script.sh
+
+text
+
+### Adding Execute Permission
+
+To allow a script to be executed, add execute permission:
+
+chmod +x script.sh
+
+text
+
+or for the user only:
+
+chmod u+x script.sh
+
+text
+
+### Running the Script
+
+Once executable, run the script with:
+
+./script.sh
+
+text
+
+---
+
+## Bash `if` Statement Syntax and Examples
+
+### Basic `if` Statement
+
+if [ condition ]
+then
+
+commands
+fi
+
+text
+
+Example:
+
+a=5
+b=30
+if [ $a -lt $b ]
+then
+echo "a is less than b"
+fi
+
+text
+
+Output:
+
+a is less than b
+
+text
+
+### `if...else` Statement
+
+if [ condition ]
+then
+
+commands if true
+else
+
+commands if false
+fi
+
+text
+
+Example:
+
+a=99
+b=45
+if [ $a -lt $b ]
+then
+echo "a is less than b"
+else
+echo "a is greater than b"
+fi
+
+text
+
+Output:
+
+a is greater than b
+
+text
+
+### `if...elif...else` Statement
+
+if [ condition1 ]
+then
+
+commands1
+elif [ condition2 ]
+then
+
+commands2
+else
+
+commands3
+fi
+
+text
+
+Example to determine triangle type:
+
+read a
+read b
+read c
+
+if [ $a == $b -a $b == $c ]
+then
+echo EQUILATERAL
+elif [ $a == $b -o $b == $c -o $a == $c ]
+then
+echo ISOSCELES
+else
+echo SCALENE
+fi
+
+text
+
+---
+
+## Bash `case` Statement Syntax
+
+The `case` statement is useful for matching a variable against multiple patterns:
+
+case $variable in
+pattern1)
+commands ;;
+pattern2)
+commands ;;
+*)
+default commands ;;
+esac
+
+text
+
+- Patterns can include wildcards and multiple options separated by `|`.
+- The `*)` pattern acts as a default case.
+- Each pattern block ends with `;;`.
+- The statement ends with `esac` (case spelled backward).
+
+---
+
+
+### 💾 Save and Exit
+| Command | Action                         |
+|---------|--------------------------------|
+| `:w`    | Save file                      |
+| `:q`    | Quit                           |
+| `:wq`   | Save and quit                  |
+| `:q!`   | Quit without saving            |
+
+### ✂️ Editing
+| Command | Action                          |
+|---------|---------------------------------|
+| `x`     | Delete character                |
+| `dd`    | Delete line                     |
+| `yy`    | Copy line                       |
+| `p`     | Paste after cursor              |
+| `u`     | Undo                            |
+| `Ctrl + r` | Redo                         |
+
+### 🔍 Searching
+- `/text` — Search forward
+- `?text` — Search backward
+- `n` — Repeat search
+
+---
+
+## 💻 Common Terminal Commands
+
+| Command | Description                       |
+|---------|-----------------------------------|
+| `ls`    | List files and directories        |
+| `cd`    | Change directory                  |
+| `pwd`   | Print current directory           |
+| `touch file.txt` | Create a new file        |
+| `mkdir mydir` | Create a new directory      |
+| `rm file.txt` | Remove a file               |
+| `rmdir mydir` | Remove an empty directory   |
+| `cp file1 file2` | Copy file                |
+| `mv file1 newname` | Rename/move file       |
+| `cat file.txt` | View file content          |
+| `echo "hello"` | Print text                 |
+| `clear` | Clear the terminal screen         |
+
+---
+
+## 🐚 Bash Scripting Tips
+
+### Basic Script Template
+```bash
+#!/bin/bash
+echo "Hello, World!"
+
 > ✨ *This document is a living reference — feel free to fork and add your own insights!*
 
